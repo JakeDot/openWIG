@@ -3,3 +3,10 @@
 
 # Ignore Gradle build output directory
 build
+OpenWIGLibrary/local.properties
+gradle.properties
+gradle
+gradlew
+gradlew.bat
+.idea
+local.properties
