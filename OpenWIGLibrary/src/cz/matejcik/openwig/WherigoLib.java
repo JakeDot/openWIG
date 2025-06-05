@@ -68,19 +68,15 @@ public class WherigoLib implements JavaFunction {
 	public static final Hashtable env = new Hashtable(); /* Wherigo's Env table */
 	public static final String DEVICE_ID = "DeviceID";
 	public static final String PLATFORM = "Platform";
+
 	static {
-		env.put("Device", "undefined");
-		env.put("DeviceID", "undefined");
-		env.put("Platform", "MIDP-2.0/CLDC-1.1");
-		env.put("CartFolder", "c:/what/is/it/to/you");
-		env.put("SyncFolder", "c:/what/is/it/to/you");
-		env.put("LogFolder", "c:/what/is/it/to/you");
-		env.put("CartFilename", "cartridge.gwc");
-		env.put("PathSep", "/"); // no. you may NOT do file i/o on this device.
-		env.put("Version", "2.11-compatible(r"+Engine.VERSION+")");
-		env.put("Downloaded", new Double(0));
+		setupEnvironment();
 	}
-	
+
+	private static void setupEnvironment() {
+		net.jakedot.openwig.Constants.Environment.initEnvironment(env)
+	}
+
 	private int index;
 	private Class klass;
 
