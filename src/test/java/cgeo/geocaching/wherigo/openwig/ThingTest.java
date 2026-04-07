@@ -24,7 +24,7 @@ public class ThingTest {
     public void testThingInitialization() {
         assertNotNull("Thing should be initialized", thing);
         assertNotNull("Inventory should be initialized", thing.inventory);
-        assertNotNull("Actions vector should be initialized", thing.actions);
+        assertNotNull("Actions list should be initialized", thing.actions);
     }
 
     @Test
@@ -100,11 +100,11 @@ public class ThingTest {
     public void testThingActions() {
         Action action1 = new Action();
         action1.rawset("Name", "Action1");
-        thing.actions.addElement(action1);
+        thing.actions.add(action1);
         
         Action action2 = new Action();
         action2.rawset("Name", "Action2");
-        thing.actions.addElement(action2);
+        thing.actions.add(action2);
         
         assertThat(thing.actions).hasSize(2);
         assertThat(thing.actions).contains(action1, action2);
@@ -166,7 +166,7 @@ public class ThingTest {
     public void testThingCommands() {
         Action command1 = new Action();
         command1.rawset("Name", "Command1");
-        thing.actions.addElement(command1);
+        thing.actions.add(command1);
         
         assertThat(thing.actions).contains(command1);
     }

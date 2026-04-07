@@ -8,8 +8,6 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Vector;
-
 /**
  * Test suite for Action class.
  */
@@ -25,7 +23,7 @@ public class ActionTest {
     @Test
     public void testActionInitialization() {
         assertNotNull("Action should be initialized", action);
-        assertNotNull("Targets vector should be initialized", action.targets);
+        assertNotNull("Targets list should be initialized", action.getTargets());
     }
 
     @Test
@@ -66,11 +64,11 @@ public class ActionTest {
         Thing target2 = new Thing(false);
         target2.rawset("Name", "Target2");
         
-        action.targets.addElement(target1);
-        action.targets.addElement(target2);
+        action.getTargets().add(target1);
+        action.getTargets().add(target2);
         
-        assertThat(action.targets).hasSize(2);
-        assertThat(action.targets).contains(target1, target2);
+        assertThat(action.getTargets()).hasSize(2);
+        assertThat(action.getTargets()).contains(target1, target2);
     }
 
     @Test
@@ -81,7 +79,7 @@ public class ActionTest {
 
     @Test
     public void testActionWithEmptyTargets() {
-        assertThat(action.targets).isEmpty();
+        assertThat(action.getTargets()).isEmpty();
     }
 
     @Test
@@ -110,8 +108,8 @@ public class ActionTest {
         target2.rawset("Visible", false);
         target2.moveTo(container);
         
-        action.targets.addElement(target1);
-        action.targets.addElement(target2);
+        action.getTargets().add(target1);
+        action.getTargets().add(target2);
         
         int visibleCount = action.visibleTargets(container);
         assertThat(visibleCount).isEqualTo(1);
@@ -140,7 +138,7 @@ public class ActionTest {
 
     @Test
     public void testActionHasParameter() {
-        action.targets.addElement(new Thing(false));
+        action.getTargets().add(new Thing(false));
         assertTrue("Action with targets should have parameter", action.hasParameter());
         
         Action emptyAction = new Action();
