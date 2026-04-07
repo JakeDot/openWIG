@@ -41,7 +41,7 @@ public class Cartridge extends EventTable {
     public List<Timer> timers = new ArrayList<>();
 
     public List<Thing> things = new ArrayList<>();
-    public List<Action>universalActions = new ArrayList<>();
+    public List<Action> universalActions = new ArrayList<>();
 
     public static List<Task> tasks = new ArrayList<>();
 
